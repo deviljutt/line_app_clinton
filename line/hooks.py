@@ -64,12 +64,12 @@ app_license = "MIT"
 # ------------
 
 # before_install = "line.install.before_install"
-# after_install = "line.install.after_install"
+after_install = "line.install.after_install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "line.uninstall.before_uninstall"
+before_uninstall = "line.uninstall.before_uninstall.before_uninstall"
 # after_uninstall = "line.uninstall.after_uninstall"
 
 # Desk Notifications
@@ -139,9 +139,9 @@ app_license = "MIT"
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-#	"frappe.desk.doctype.event.event.get_events": "line.event.get_events"
-# }
+override_whitelisted_methods = {
+    "frappe.www.login.login_via_line": "line.oauth2_logins.login_via_line",
+}
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
