@@ -141,7 +141,11 @@ before_uninstall = "line.uninstall.before_uninstall.before_uninstall"
 #
 override_whitelisted_methods = {
     "frappe.www.login.login_via_line": "line.oauth2_logins.login_via_line",
+    "frappe.website.doctype.web_form.web_form.accept": "line.web_form.update_profile"
 }
+
+
+
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
