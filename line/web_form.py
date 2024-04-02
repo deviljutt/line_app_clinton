@@ -121,15 +121,15 @@ def check_customer(doc):
     
     for doc in documents:
         contact = frappe.get_doc("Contact", doc.name)
-        #links =  contact.links
-        #if not links:
-        customer = _create_customer(doc.first_name,doc.email_id)
-       # contact.append("links",{
-        #        "link_doctype": "Customer",
-        #        "link_name": customer.name,
-        #})
-        #contact.save(ignore_permissions=True) 
-        frappe.publish_realtime('new_customer', {'customer_name': customer.name,'email_id': customer.email_id,'name': customer.name,'tax_id': ""})
+        links =  contact.links
+        if not links:
+            customer = _create_customer(doc.first_name,doc.email_id)
+            contact.append("links",{
+                    "link_doctype": "Customer",
+                    "link_name": customer.name,
+            })
+            contact.save(ignore_permissions=True) 
+            frappe.publish_realtime('new_customer', {'customer_name': customer.name,'email_id': customer.email_id,'name': customer.name,'tax_id': "",'phone': ""})
 
 def _create_customer(customer_name,email_id):
     filters = {"email_id": email_id}
